@@ -17,7 +17,8 @@ jobs:
           custom_payload: |
             {
               attachments: [{
-                text: "Testtt"
+                text: "Testtt",
+                "image_url": "https://raw.githubusercontent.com/mlefebvre/updates-vaccination/main/screenshot.png",
               }]
             }
         env:
