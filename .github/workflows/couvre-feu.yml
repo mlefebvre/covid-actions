@@ -1,0 +1,23 @@
+name: Vaccin monitor
+
+on:
+  schedule:
+    - cron: "25 1 * * *" # UTC
+  workflow_dispatch:
+
+jobs:
+  monitor:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: 8398a7/action-slack@v3
+        with:
+          status: custom
+          custom_payload: |
+            {
+              attachments: [{
+                text: "Rentrez chez vous! :cop:",
+              }]
+            }
+        env:
+          SLACK_WEBHOOK_URL: ${{ secrets.TEST_SLACK_WEBHOOK_URL }}
