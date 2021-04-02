@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  build:
+  stats-updater:
 
     runs-on: ubuntu-latest
     steps:
@@ -25,6 +25,7 @@ jobs:
       run:  python update-qc-stats.py
       
     - name: Commit stats
+      id: commit
       continue-on-error: true
       run: |
         git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
@@ -33,7 +34,7 @@ jobs:
         git commit -m "New daily stats"
         
     - name: Push stats
-      if: ${{ success() }}
+      if: steps.commit.outcome == 'success'
       uses: ad-m/github-push-action@master
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
