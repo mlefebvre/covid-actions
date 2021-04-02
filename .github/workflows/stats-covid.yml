@@ -39,3 +39,46 @@ jobs:
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
         branch: ${{ github.ref }}
+        
+    - name: Slack notification
+      if: steps.commit.outcome == 'success'
+      uses: tokorom/action-slack-incoming-webhook@main
+      env:
+        INCOMING_WEBHOOK_URL: ${{ secrets.TEST_SLACK_WEBHOOK_URL }}
+      with:
+        text: Stats du jour
+        attachments: |
+          [
+            {
+              "fields": [
+                {
+                  "title": "Infectés",
+                  "value": "${{ steps.stats.outputs.cases }}"
+                },
+                {
+                  "title": "Actifs",
+                  "value": "${{ steps.stats.outputs.cases }}"
+                },
+                {
+                  "title": "Rétablis",
+                  "value": "${{ steps.stats.outputs.recovered }}"
+                },
+                {
+                  "title": "Morts",
+                  "value": "${{ steps.stats.outputs.dead }}"
+                },
+                {
+                  "title": "Hospitalisations",
+                  "value": "${{ steps.stats.outputs.hospital }}"
+                },
+                {
+                  "title": "Soins intensifs",
+                  "value": "${{ steps.stats.outputs.icu }}"
+                },
+                {
+                  "title": "Vaccinations",
+                  "value": "${{ steps.stats.outputs.vaccines }}"
+                }
+              ]
+            }
+          ]
