@@ -57,7 +57,7 @@ jobs:
                 },
                 {
                   "title": "Actifs",
-                  "value": "${{ steps.stats.outputs.cases }}"
+                  "value": "${{ steps.stats.outputs.active }}"
                 },
                 {
                   "title": "Rétablis",
