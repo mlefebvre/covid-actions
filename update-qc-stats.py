@@ -32,5 +32,5 @@ if today != yesterday:
         for key, value in today.items():
             diff = '{0:+}'.format(value - yesterday[key])
             line = f"{key}: {value} ({diff})"
-            print(f"::set-output name={key}::value ({diff})")
+            print(f"::set-output name={key}::{value} ({diff})")
             f.write(f"{key}: {value} ({diff})\n")
