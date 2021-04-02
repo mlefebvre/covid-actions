@@ -30,7 +30,14 @@ yesterday = parse_history(history[1])
 if today != yesterday:
     with open("daily_stats.txt", "w", encoding="UTF-8") as f:
         for key, value in today.items():
-            diff = '{0:+}'.format(value - yesterday[key])
+            diff = value - yesterday[key]
+            emoji = ""
+            if diff > 0:
+                emoji = ":wau:"
+            elif diff < 0:
+                emoji = ":wau_down:"
+
+            diff = '{0:+}'.format(diff)
             line = f"{key}: {value} ({diff})"
-            print(f"::set-output name={key}::{value} ({diff})")
+            print(f"::set-output name={key}::{value} ({diff}) {emoji}")
             f.write(f"{key}: {value} ({diff})\n")
