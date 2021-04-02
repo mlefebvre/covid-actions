@@ -1,4 +1,4 @@
-name: Vaccin monitor
+name: Couvre-feu
 
 on:
   schedule:
