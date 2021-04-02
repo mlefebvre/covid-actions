@@ -1,6 +1,8 @@
 name: Stats COVID
 
 on:
+  schedule:
+    - cron: "*/10 15-16 * * *"
   workflow_dispatch:
 
 jobs:
@@ -44,9 +46,9 @@ jobs:
       if: steps.commit.outcome == 'success'
       uses: tokorom/action-slack-incoming-webhook@main
       env:
-        INCOMING_WEBHOOK_URL: ${{ secrets.TEST_SLACK_WEBHOOK_URL }}
+        INCOMING_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
       with:
-        text: Stats du jour
+        text: Les stats du jour!
         attachments: |
           [
             {
