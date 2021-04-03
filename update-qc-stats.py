@@ -40,6 +40,5 @@ if today != yesterday:
             elif diff < previous_diff:
                 emoji = ":wau_down:"
 
-            line = f"{key}: {value} ({diff})"
             print(f"::set-output name={key}::{value} ({diff:+}) {emoji}")
-            f.write(f"{key}: {value} ({diff})\n")
+            f.write(f"{key}: {value} ({diff:+})\n")
