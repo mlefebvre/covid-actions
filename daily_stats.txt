@@ -1,6 +1,6 @@
 cases: 324848 (+1754)
-active: 13640 (+1743)
-recovered: 300471 (+0)
+active: 12371 (+474)
+recovered: 301740 (+1269)
 dead: 10737 (+11)
 hospital: 583 (+14)
 icu: 138 (+4)
