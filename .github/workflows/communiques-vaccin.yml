@@ -55,4 +55,4 @@ jobs:
       env:
         INCOMING_WEBHOOK_URL: ${{ secrets.TEST_SLACK_WEBHOOK_URL }}
       with:
-        text: "Nouveaux communiqués!\n${{ env.MULTILINE_OUTPUT }}""
+        text: "Nouveaux communiqués!\n${{ env.MULTILINE_OUTPUT }}"
