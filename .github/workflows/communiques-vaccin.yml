@@ -42,17 +42,10 @@ jobs:
         github_token: ${{ secrets.GITHUB_TOKEN }}
         branch: ${{ github.ref }}
         
-    - name: Replace new lines
-      run: |
-        output="${{ steps.communiques.outputs.communiques }}"
-        echo 'MULTILINE_OUTPUT<<EOF' >> $GITHUB_ENV
-        echo ${output/\%0A/\\n} >> $GITHUB_ENV
-        echo 'EOF' >> $GITHUB_ENV
-        
     - name: Slack notification
       if: steps.commit.outcome == 'success'
       uses: tokorom/action-slack-incoming-webhook@main
       env:
         INCOMING_WEBHOOK_URL: ${{ secrets.TEST_SLACK_WEBHOOK_URL }}
       with:
-        text: "Nouveaux communiqués!\n${{ env.MULTILINE_OUTPUT }}"
+        text: "Nouveaux communiqués!\n${{ steps.communiques.outputs.communiques }}"

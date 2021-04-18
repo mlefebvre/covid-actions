@@ -33,7 +33,7 @@ for communique in communiques:
     output.append(f"<{url}|{title}>")
 
 
-output = "%0A".join(output).replace("%", "%25")
+output = ",".join(output).replace("%", "%25")
 print(f"::set-output name=communiques::{output}")
 
 saved_communiques.update(new_communiques)
