@@ -44,7 +44,7 @@ jobs:
         
     - name: Replace new lines
       run: |
-        output=${{ secrets.TEST_SLACK_WEBHOOK_URL }}
+        output=${{ steps.communiques.outputs.communiques }}
         echo 'MULTILINE_OUTPUT<<EOF' >> $GITHUB_ENV
         echo ${output/\%0A/\\n} >> $GITHUB_ENV
         echo 'EOF' >> $GITHUB_ENV
