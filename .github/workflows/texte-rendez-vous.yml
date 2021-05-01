@@ -46,6 +46,6 @@ jobs:
       if: steps.commit.outcome == 'success'
       uses: tokorom/action-slack-incoming-webhook@main
       env:
-        INCOMING_WEBHOOK_URL: ${{ secrets.TEST_SLACK_WEBHOOK_URL }}
+        INCOMING_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
       with:
         text: Le texte des rendez-vous a changé! https://github.com/mlefebvre/covid-actions/blob/main/texte-rendez-vous.txt
